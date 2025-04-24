@@ -1,24 +1,18 @@
 package model
 
 type Message struct {
-	// content	string	the message contents (up to 2000 characters)	one of content, file, embeds, poll
-	// username	string	override the default username of the webhook	false
-	// avatar_url	string	override the default avatar of the webhook	false
-	// tts	boolean	true if this is a TTS message	false
-	// embeds	array of up to 10 embed objects	embedded rich content	one of content, file, embeds, poll
-	// allowed_mentions	allowed mention object	allowed mentions for the message	false
-	// components *	array of message component	the components to include with the message	false
-	// files[n] **	file contents	the contents of the file being sent	one of content, file, embeds, poll
-	// payload_json **	string	JSON encoded body of non-file params	multipart/form-data only
-	// attachments **	array of partial attachment objects	attachment objects with filename and description	false
-	// flags	integer	message flags combined as a bitfield (only SUPPRESS_EMBEDS and SUPPRESS_NOTIFICATIONS can be set)	false
-	// thread_name	string	name of thread to create (requires the webhook channel to be a forum or media channel)	false
-	// applied_tags	array of snowflakes	array of tag ids to apply to the thread (requires the webhook channel to be a forum or media channel)	false
-	// poll	poll request object	A poll!	one of content, file, embeds, poll
-
-	Content  string `json:"content,omitempty"`
-	UserName string `json:"username,omitempty"`
-	AvatarUrl string `json:"avatar_url,omitempty"`
-	Tts      bool   `json:"tts,omitempty"`
-	Embeds   []Embed `json:"embeds,omitempty"`
+	Content         string            `json:"content,omitempty"`
+	UserName        string            `json:"username,omitempty"`
+	AvatarUrl       string            `json:"avatar_url,omitempty"`
+	Tts             bool              `json:"tts,omitempty"`
+	Embeds          []Embed           `json:"embeds,omitempty"`
+	AllowedMentions AllowedMentions   `json:"allowed_mentions,omitempty"`
+	Components      []ComponentObject `json:"components,omitempty"`
+	// Files 		[]File            `json:"files,omitempty"`
+	PayloadJson string             `json:"payload_json,omitempty"`
+	Attachments []AttachmentObject `json:"attachments,omitempty"`
+	Flags       int64              `json:"flags,omitempty"`
+	ThreadName  string             `json:"thread_name,omitempty"`
+	AppliedTags []string           `json:"applied_tags,omitempty"`
+	Poll        PollObject         `json:"poll,omitempty"`
 }
