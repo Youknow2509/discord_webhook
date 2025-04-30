@@ -1,10 +1,13 @@
 package service
 
-import "log"
+import (
+	"log"
+	"github.com/Youknow2509/discord_webhook/internal/model"
+)
 
 // interface for sending messages with webhook discord
 type ISendMessage interface {
-	SendText(message string) error
+	SendText(message model.MessageText) error
 	// TODO
 }
 

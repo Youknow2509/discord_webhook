@@ -16,14 +16,14 @@ type SendMessageImpl struct {
 }
 
 // SendText implements service.ISendMessage.
-func (s *SendMessageImpl) SendText(message string) error {
-	messageSend := model.MessageText{
-		UserName: "Test user",
-		Content: message,
-		AvatarUrl: "https://cdn.discordapp.com/avatars/123456789012345678/abcdef1234567890abcdef1234567890.png",
-	}
+func (s *SendMessageImpl) SendText(message model.MessageText) error {
+	// messageSend := model.MessageText{
+	// 	UserName: "Test user",
+	// 	Content: message,
+	// 	AvatarUrl: "https://cdn.discordapp.com/avatars/123456789012345678/abcdef1234567890abcdef1234567890.png",
+	// }
 	body := new(bytes.Buffer)
-	err := json.NewEncoder(body).Encode(messageSend)
+	err := json.NewEncoder(body).Encode(message)
 	if err != nil {
 		log.Fatal(err)
 	}

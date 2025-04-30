@@ -1,0 +1,5 @@
+# Environment project
+environment/.env
+
+# vscode
+.vscode/

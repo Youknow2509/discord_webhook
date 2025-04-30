@@ -1,0 +1,110 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server for Discord Webhook.",
+        "title": "API Documentation Discord Webhook",
+        "termsOfService": "github.com/Youknow2509/discord_webhook/",
+        "contact": {
+            "name": "TEAM V",
+            "url": "github.com/Youknow2509/discord_webhook/",
+            "email": "lytranvinh.work@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/api/v1/send_text": {
+            "post": {
+                "description": "Send text to discord with webhook",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Send text to discord with webhook",
+                "parameters": [
+                    {
+                        "description": "Message text",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.MessageText"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/response.ResponseData"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/response.ErrResponseData"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.MessageText": {
+            "type": "object",
+            "properties": {
+                "avatar_url": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.ErrResponseData": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "Ma status code",
+                    "type": "integer"
+                },
+                "detail": {
+                    "description": "Thong bao loi"
+                },
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.ResponseData": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "Ma status code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "Du lieu duoc return"
+                },
+                "message": {
+                    "description": "Thong bao loi",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "OpenAPI",
+        "url": "https://swagger.io/resources/open-api/"
+    }
+}
